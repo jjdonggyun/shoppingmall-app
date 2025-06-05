@@ -5,9 +5,19 @@ const path = require('path');
 
 const app = express();
 const port = 4000;
+const cors = require('cors');
+
+app.use(cors());
+// JSON 파싱을 위한 미들웨어
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.send('안녕하세요. 1111')
+})
+
+app.post('/', (req, res) => {
+    console.log(req.body);
+    res.json(req.body);
 })
 
 // console.log(path.join(__dirname, '../uploads'));
