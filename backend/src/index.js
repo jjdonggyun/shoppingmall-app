@@ -6,13 +6,26 @@ const path = require('path');
 const app = express();
 const port = 4000;
 const cors = require('cors');
+const mongoose = require('mongoose');
+// env 환경변수 사용
+const dotenv = require('dotenv');
+dotenv.config();
 
 app.use(cors());
 // JSON 파싱을 위한 미들웨어
 app.use(express.json());
 
+// DB 커넥트
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        console.log('연결 완료');
+    })
+    .catch(err => {
+        console.error(err);
+    })
+
 app.get('/', (req, res) => {
-    res.send('안녕하세요. 1111')
+    res.send('안녕하세요. 1111');
 })
 
 app.post('/', (req, res) => {
@@ -24,5 +37,5 @@ app.post('/', (req, res) => {
 app.use(express.static(path.join(__dirname, '../uploads')));
 
 app.listen(port, () => {
-    console.log(`${port}번에서 실행이 되었습니다.`)
+    console.log(`${port}번에서 실행이 되었습니다.`);
 });
