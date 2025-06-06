@@ -24,13 +24,21 @@ mongoose.connect(process.env.MONGO_URI)
         console.error(err);
     })
 
-app.get('/', (req, res) => {
-    res.send('안녕하세요. 1111');
+app.get('/', (req, res, next) => {
+    setImmediate(() => next(new Error('It is an error')));
+    // res.send('안녕하세요 111');
 })
 
 app.post('/', (req, res) => {
     console.log(req.body);
     res.json(req.body);
+})
+
+// app.use('/users', require('./routes/users'));
+
+app.use((error, req, res, next) => {
+    res.status(error.status || 500);
+    res.send(error.message || '서버에서 에러가 났습니다.');
 })
 
 // console.log(path.join(__dirname, '../uploads'));
