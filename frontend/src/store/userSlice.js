@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 const initialState = {
     userData: {
         id: '',
-        eamil: '',
+        email: '',
         name: '',
         role: 0,
         image: '',
