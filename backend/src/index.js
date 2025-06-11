@@ -1,4 +1,5 @@
 // 클라이언트에서 API 요청을 보낼 때 도착하는 엔트리 파일 / 노드 js의 진입점이 되는 파일
+// 서버 설정 + DB 연결 + 라우팅 연결
 const express = require('express');
 // 절대경로 사용
 const path = require('path');

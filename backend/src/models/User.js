@@ -1,3 +1,5 @@
+// User 스키마 정의 + 암호화/검증 로직
+
 const { default: mongoose } = require("mongoose");
 const bcrypt = require("bcryptjs");
 
