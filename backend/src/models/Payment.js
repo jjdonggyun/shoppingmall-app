@@ -1,0 +1,19 @@
+const { default: mongoose, Schema } = require("mongoose");
+
+const PaymentSchema = mongoose.Schema({
+    user: {
+        type: Object
+    },
+    data: {
+        type: Array,
+        default: []
+    },
+    product: {
+        type: Array,
+        default: []
+    }
+}, { timestamps: true })
+
+const Payment = mongoose.model("Payment", PaymentSchema);
+
+module.exports = Payment;
